@@ -1,11 +1,23 @@
 # `fast-downward-Temporal`
 
-This project leverages the fast-downward DSL to solve temporal planning problems with durationless actions, using the underlying classical planning engine FastDownward. 
+# Temporal Planning with the Fast Downward Haskell DSL
 
-This work comprises a Haskell project that interacts with a Python script for computing automata from Linear Temporal Logic formulas and a C++/Python planning engine for solving classical planning problems. Thus there is some interprocess communication involved, requiring FastDownward and the Python script installed locally. 
+This project extends the Fast Downward Haskell DSL to support temporal planning problems with instantaneous actions, using the underlying classical planning engine, Fast Downward.
 
-There is a section on build information: for the Haskell project; the Python script; and the FastDownward planning engine. 
+The implementation combines three components:
 
-I've demonstrated how to use the output of the Python script to manipulate the DSL into compiling SAS+ files that encode temporal planning problems. This follows the theoretical work by Giuseppe De Giacomo and Moshe Y Vardi, on using classical planning engines to solve temporal planning problems using Deterministic Finite Automata (DFA).
+- **Haskell:** An extension to the existing embedded planning DSL, incorporating temporal constraints into the planning problem representation.
+- **Python:** A script using the `flloat` library to translate Linear Temporal Logic (LTL) formulas into Deterministic Finite Automata (DFA).
+- **Fast Downward:** The underlying classical planning engine, which searches for plans satisfying the resulting planning problem.
 
-This is no significant attempt at producing a competitive temporal planner, so fast performance times are no thanks to me. This would be down to the work of the researchers and engineers behind the planning DSL and the FastDownward planning engine. I purely wanted to produce a proof of concept, reproducing the work of others.
+The components communicate through interprocess communication. Consequently, building and running the project requires a local installation of Fast Downward and the necessary Python dependencies.
+
+This repository includes build instructions for the Haskell project, the Python script and the Fast Downward planning engine.
+
+The central idea is to use the DFA generated from an LTL formula to extend the planning problem with automaton state and transition information. This allows temporal constraints to be encoded into SAS+ planning problems and solved using an existing classical planning engine. The approach follows established theoretical work by Giuseppe De Giacomo and Moshe Y. Vardi on the use of automata in temporal planning.
+
+**Scope and motivation**
+
+This project is intended as a proof of concept demonstrating how temporal planning can be integrated into an existing functional embedded domain-specific language. It is not an attempt to develop a new temporal planning algorithm or a competitive temporal planner.
+
+The underlying planning performance is primarily attributable to the existing DSL and Fast Downward. The contribution of this project is the integration of temporal logic and automata-based reasoning into that existing framework, while leaving the underlying classical planning engine unchanged.
