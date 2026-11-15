@@ -1,5 +1,7 @@
-# `fast-downward`
+# `fast-downward-Temporal`
 
-fast-downward is a library for modelling classical planning problems and solving them using the [Fast Downward](http://www.fast-downward.org) engine. For general usage, see [`FastDownward`](https://hackage.haskell.org/package/fast-downward-0.1.0.0/docs/FastDownward.html), and for an example see [`FastDownward.Examples.Gripper`](https://hackage.haskell.org/package/fast-downward-0.1.0.0/docs/FastDownward-Examples-Gripper.html).
+This is project leverages the fast-downward DSL to solve temporal planning problems with durationless actions, using the underlying classical planning engine FastDownward. 
 
-Note that usage of this library requires the downward executable - see [Obtaining and Running Fast Downward](http://www.fast-downward.org/ObtainingAndRunningFastDownward) for more instructions.
+This work comprises a Haskell project that interacts with a Python script for computing automata from Linear Temporal Logic formulas and a C++/Python planning engine for solving classical planning problems. Thus there is some interprocess communication involved, requiring FastDownward and the Python script installed locally. 
+
+
